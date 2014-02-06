@@ -1,3 +1,4 @@
+# frut
 # Simple sudo role
 
 This role sets up a simple sudoers file. Each user has full sudo access, and a
