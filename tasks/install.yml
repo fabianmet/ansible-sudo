@@ -2,25 +2,31 @@
 - name:     Install sudo via apt
   apt:      name=sudo state=present
   when:     ansible_pkg_mgr == 'apt'
+  become:   true
 
 - name:     Install sudo via yum
   yum:      name=sudo state=present
   when:     ansible_pkg_mgr == 'yum'
+  become:   true
 
 - name:     Install sudo via zypper
   zypper:   name=sudo state=present
   when:     ansible_pkg_mgr == 'zypper'
+  become:   true
 
 - name:     Install sudo via pacman
   pacman:   name=sudo state=present
   when:     ansible_pkg_mgr == 'pacman'
+  become:   true
 
 - name:     Install sudo via portage
   portage:  name=sudo state=present
   when:     ansible_pkg_mgr == 'portage'
+  become:   true
 
 - name:     Ensure sudo group present
   group:    name=sudo state=present system=yes
+  become:   true
 
 - name:     Ensure the sudoers directory is present
   file: >
@@ -29,4 +35,5 @@
         owner="{{ sudo_sudoers_dir_owner | default(omit) }}"
         group="{{ sudo_sudoers_dir_group | default(omit) }}"
         mode="{{ sudo_sudoers_dir_mode | default(omit) }}"
+  become:   true
 ...

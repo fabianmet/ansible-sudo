@@ -10,4 +10,5 @@
     group="{{ sudo_sudoers_file_group | default(omit) }}"
     mode="{{ sudo_sudoers_file_mode | default(omit) }}"
     validate='visudo -cf %s'
+  become:   true
 ...
